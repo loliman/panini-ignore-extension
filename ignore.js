@@ -1,4 +1,4 @@
-var hiddenText = '<article class="wbbPost wbbPostDeleted wbbPostHidden message messageCollapsed jsClipboardObject userOnlineGroupMarking3"><div class="messageHeader"><ul class="messageQuickOptions"></ul>		<div class="box24">			<div class="framed userLink"><div style="width: 24px; height: 24px; font-size: 23px;" alt="" class="userAvatarImage  icon icon24 icon-ban-circle"></div></div>			<div>				<h1>Beitrag geblockt!</h1>				<small>Dieser Beitrag wurde durch die Panini Ignore Extension automatisch ausgeblendet. Klicke hier um den Beitrag dennoch anzuzeigen.	</small>			</div>		</div>	</div></article>';  
+var hiddenText = '<article class="wbbPost wbbPostDeleted wbbPostHidden message messageCollapsed jsClipboardObject userOnlineGroupMarking3"><div class="messageHeader"><ul class="messageQuickOptions"></ul>		<div class="box24">			<div class="framed userLink"><img src="##IMAGE##" style="width: 24px; height: 24px; font-size: 23px;" alt="" class="userAvatarImage"></div>			<div>				<h1>Beitrag von ##NAME## (##DATE##)</h1>				<small>Dieser Beitrag wurde durch die Panini Ignore Extension automatisch ausgeblendet. Klicke hier um den Beitrag dennoch anzuzeigen.	</small>			</div>		</div>	</div></article>';  
 var hideButtons = '<a class="badge" style="visibility: hidden;"></a><a class="badge 	hideBadge" style="background-color:red;">X</a>';
 
 $(document).ready(function() {
@@ -52,6 +52,9 @@ $(document).ready(function() {
 						text.css('display', 'none');
 
 						hiddenText = hiddenText.replace('<article', '<article id="' + text.attr('id') + '_hidden"');
+						hiddenText = hiddenText.replace('##IMAGE##', text.find('.userAvatarImage').prop('src'));
+						hiddenText = hiddenText.replace('##NAME##', '<a href="' + text.find('.userLink').prop('href') + '">' + text.find('.userLink').text() + '</a>');
+						hiddenText = hiddenText.replace('##DATE##', text.find('.datetime').text());				
 						$(this).append(hiddenText);
 
 						var hidden = $('#' + text.attr('id') + '_hidden');

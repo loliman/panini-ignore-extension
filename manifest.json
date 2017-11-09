@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Panini Ignore Extension",
+  "description": "Panini Ignore Extension",
+  "version": "1.0",
+  "permissions": [
+          "storage"
+        ],
+  "content_scripts": [
+    {
+      "js": ["jquery-2.2.2.js","ignore.js"],
+	  "matches": [ "http://*/*", "https://*/*"],
+	  "run_at": "document_idle"
+    }
+  ]
+}

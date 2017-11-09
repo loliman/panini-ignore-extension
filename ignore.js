@@ -51,11 +51,11 @@ $(document).ready(function() {
 						var text = $(this).children().first();
 						text.css('display', 'none');
 
-						hiddenText = hiddenText.replace('<article', '<article id="' + text.attr('id') + '_hidden"');
-						hiddenText = hiddenText.replace('##IMAGE##', text.find('.userAvatarImage').prop('src'));
-						hiddenText = hiddenText.replace('##NAME##', '<a href="' + text.find('.userLink').prop('href') + '">' + text.find('.userLink').text() + '</a>');
-						hiddenText = hiddenText.replace('##DATE##', text.find('.datetime').text());				
-						$(this).append(hiddenText);
+						var hiddenTextToAdd = hiddenText.replace('<article', '<article id="' + text.attr('id') + '_hidden"');
+						hiddenTextToAdd = hiddenTextToAdd.replace('##IMAGE##', text.find('.userAvatarImage').prop('src'));
+						hiddenTextToAdd = hiddenTextToAdd.replace('##NAME##', '<a href="' + text.find('.userLink').prop('href') + '">' + text.find('.userLink').text() + '</a>');
+						hiddenTextToAdd = hiddenTextToAdd.replace('##DATE##', text.find('.datetime').text());				
+						$(this).append(hiddenTextToAdd);
 
 						var hidden = $('#' + text.attr('id') + '_hidden');
 						hidden.css('display', 'block');
